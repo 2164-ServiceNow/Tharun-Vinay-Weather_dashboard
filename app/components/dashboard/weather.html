@@ -1,0 +1,16 @@
+<div>
+    <input type="text" ng-model="cityName" placeholder="Enter city name" />
+    <button ng-click="getWeather()">Search</button>
+
+    <div ng-if="weatherData">
+        <h2>{{weatherData.location.name}}, {{weatherData.location.region}}, {{weatherData.location.country}}</h2>
+        <p>Temperature: {{weatherData.current.temp_c}} °C /  {{weatherData.current.temp_f}} °F</p>
+        <p>Humidity: {{weatherData.current.humidity}}%</p>
+        <p>Wind Speed: {{weatherData.current.wind_kph}} kph</p>
+        <p>Condition: {{weatherData.current.condition.text}}</p>
+    </div>
+
+    <div ng-if="errorMessage">
+        <p style="color: red;">{{ errorMessage }}</p>
+    </div>
+</div>
