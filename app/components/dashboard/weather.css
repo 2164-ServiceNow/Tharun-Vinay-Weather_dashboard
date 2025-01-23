@@ -1,0 +1,173 @@
+/* Background image */
+body {
+    background: url('https://img.freepik.com/free-vector/gorgeous-clouds-background-with-blue-sky-design_1017-25501.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Position current date at top-right */
+.currentDate {
+    font-weight: bold;
+    color: black;
+    font-size: 1.8rem;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+/* Card styles */
+.card {
+    background-color: rgba(255, 250, 250, 0.2); /* Semi-transparent background */
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    font-weight: bold;
+    font-size: 1.8rem;
+    color: #f00d2f;
+}
+
+.card h4 {
+    font-weight: bold; 
+    color: #007bff;
+    font-size: 1.5rem;
+}
+
+.card h5 {
+    font-size: 1rem;
+}
+
+/* Weather image size */
+.weather-image img {
+    width: 100%; 
+    max-width: 100px; 
+    height: auto;
+    object-fit: contain;
+    margin-right: 60px;
+}
+
+/* Flexbox container for layout */
+.d-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    font-size: 1rem;
+    padding: 10px;
+}
+
+button {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+button svg {
+    fill: #fff;
+}
+
+.text-danger {
+    font-size: 1rem;
+    color: #ff4d4d;
+}
+
+/* Title of forecast */
+#forecast-title {
+    font-weight: bold;
+    font-size: 1.6rem;
+    margin-left: 30%;
+    margin-bottom: 20px;
+    color: #f00de1;
+}
+
+/* Forecast card layout */
+.forecast-card {
+    height: 100%; 
+    min-height: 280px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+}
+
+.days-forecast {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 15px;
+}
+
+/* Responsive for mobile screens */
+@media (max-width: 768px) {
+    .col-md-2 {
+        max-width: 100%;
+    }
+
+    .currentDate {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 1.4rem;
+        color: #ffffff;
+    }
+
+    /* Adjust forecast cards on mobile */
+    .forecast-card {
+        min-height: 250px;
+        max-width: 100%;
+    }
+
+    #forecast-title {
+        margin-left: 5%;
+        font-size: 1.5rem;
+    }
+
+    /* Adjust input fields and buttons */
+    input[type="text"] {
+        width: 90%;
+    }
+
+    button {
+        width: 90%;
+    }
+}
+
+/* Tablet and small laptop screens (up to 1024px) */
+@media (max-width: 1024px) {
+    .col-md-2 {
+        max-width: 45%;
+    }
+
+    .currentDate {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 1.6rem;
+        color: #ffffff;
+    }
+
+    #forecast-title {
+        margin-left: 10%;
+        font-size: 1.6rem;
+    }
+}
+
+/* Large laptop and desktop screens */
+@media (min-width: 1025px) {
+    .col-md-2 {
+        max-width: 22%;
+    }
+
+    .currentDate {
+        position: absolute;
+        font-size: 1.5rem;
+        top: 30px;
+        right: 50px;
+        color: #ffffff;
+    }
+}
+
