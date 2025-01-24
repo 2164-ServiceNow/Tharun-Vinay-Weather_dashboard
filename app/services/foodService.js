@@ -1,6 +1,6 @@
 angular.module('weatherApp')
   .service('foodService', function($http) {
-    const SPOONACULAR_API_KEY = '154aa189d68e4f1dac3655132747d991' 
+    const SPOONACULAR_API_KEY = '6b3708324ee143c0b53accd3f1caa3b0' 
     const BASE_URL = 'https://api.spoonacular.com/recipes'
 
 
