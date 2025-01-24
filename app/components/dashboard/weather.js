@@ -2,7 +2,7 @@ angular.module('weather', [])
 
 .component('weatherComponent', {
     templateUrl: 'app/components/dashboard/weather.html',
-    controller: function SearchWeatherCtrl($scope, weatherService) {
+    controller: function SearchWeatherCtrl($scope, weatherService, sharedWeatherService) {
         $scope.cityName = '';
         $scope.weatherData = null;
         $scope.hourlyForecast = null;
@@ -30,7 +30,8 @@ angular.module('weather', [])
                 .then(function(response) {
                     $scope.errorMessage = null; // Clear any previous errors
                     $scope.weatherData = response.data;
-
+                    sharedWeatherService.setWeatherData(response.data) // storing the weather data in the shared weather service
+                    
                     if (forecastType === 'hourly') {
                         // Get current hour
                         const currentHour = new Date().getHours();
