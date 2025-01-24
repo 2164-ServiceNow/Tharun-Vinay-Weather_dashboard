@@ -26,6 +26,6 @@ User Stories:
 Collaborators:
 
 
-*   Vinay Kumar - vinaykumar2191 [https://github.com/vinaykumar2191]
-*   Tharun Sangeeth - TharunSangeeth [https://github.com/TharunSangeeth]
+*   Vinay Kumar - [vinaykumar2191 (https://github.com/vinaykumar2191)]
+*   Tharun Sangeeth - [TharunSangeeth (https://github.com/TharunSangeeth)]
 

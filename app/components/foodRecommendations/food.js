@@ -48,7 +48,7 @@ angular.module('food', [])
           .then(function(response) {
             $scope.errorMessage = null;
             const foodResults = response.data.results
-            $scope.foodSuggestions = foodResults.slice(0, 5)
+            $scope.foodSuggestions = foodResults.slice(0, 4)
 
             // Fetch recipe details for each food to get the recipe URL
             $scope.foodSuggestions.forEach(food => {
