@@ -4,12 +4,28 @@
 
     <div ng-if="weatherData">
         <h2>{{weatherData.location.name}}, {{weatherData.location.region}}, {{weatherData.location.country}}</h2>
-        <p>Temperature: {{weatherData.current.temp_c}} °C /  {{weatherData.current.temp_f}} °F</p>
+        <p>
+            Temperature: {{weatherData.current.temp_c}} °C / {{weatherData.current.temp_f}} °F
+        </p>
         <p>Humidity: {{weatherData.current.humidity}}%</p>
         <p>Wind Speed: {{weatherData.current.wind_kph}} kph</p>
-        <p>Condition: {{weatherData.current.condition.text}}</p>
+        <p>Condition: {{weatherData.current.condition.text}}
+            <img ng-src="{{weatherData.current.condition.icon}}" alt="{{weatherData.current.condition.text}}" />
+        </p>
+
     </div>
 
+    <div ng-if="forecastData">
+        <h3>5-Day Forecast</h3>
+        <div ng-repeat="day in forecastData">
+            <p><strong>{{day.date}}:</strong> {{day.day.avgtemp_c}} °C / {{day.day.avgtemp_f}} °F</p>
+            <p>Condition: {{day.day.condition.text}} 
+                <img ng-src="{{day.day.condition.icon}}" alt="{{day.day.condition.text}}" />
+            </p>
+            <p>Max Temp: {{day.day.maxtemp_c}} °C / {{day.day.maxtemp_f}} °F</p>
+            <p>Min Temp: {{day.day.mintemp_c}} °C / {{day.day.mintemp_f}} °F</p>
+        </div>
+    </div>
     <div ng-if="errorMessage">
         <p style="color: red;">{{ errorMessage }}</p>
     </div>

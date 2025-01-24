@@ -3,7 +3,8 @@
 // Declaring an app level module which depends on views and core components.
 angular.module('weatherApp',[
     'ngRoute',
-    'weather'
+    'weather',
+    'food'
 ])
     .config(function($routeProvider){
         // Configuring routes
