@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="app/components/foodRecommendations/food.css">
+<div class="food-container">
+    <h1>Food Recommendations</h1>
+  
+    <!-- Error Message -->
+    <div class="error-message" ng-if="errorMessage">
+      <p>{{ errorMessage }}</p>
+    </div>
+  
+    <!-- Region Selection -->
+    <div class="region-selection">
+      <label for="region">Select Region:</label>
+      <select id="region" ng-model="selectedRegion">
+        <option value="">---select---</option>
+        <option value="global">Global</option>
+        <option value="italian">Italian</option>
+        <option value="indian">Indian</option>
+        <option value="american">American</option>
+        <option value="mexican">Mexican</option>
+        <option value="chinese">Chinese</option>
+        <option value="french">French</option>
+        <option value="japanese">Japanese</option>
+      </select>
+    </div>
+  
+    <!-- Fetch Recommendations Button -->
+    <div class="fetch-button">
+      <button ng-click="getFoodSuggestions()">Get Food Suggestions</button>
+    </div>
+  
+    <!-- Food Suggestions -->
+    <div class="food-suggestions" ng-if="foodSuggestions.length > 0">
+      <h2>Food Suggestions</h2>
+      <div class="food-grid">
+        <div class="food-item" ng-repeat="food in foodSuggestions">
+          <img ng-src="{{ food.image }}" alt="{{ food.title }}" />
+          <h3>{{ food.title }}</h3>
+          <a ng-href="{{ food.recipeUrl }}" target="_blank" ng-if="food.recipeUrl">View Recipe</a>
+          <p ng-if="!food.recipeUrl" class="no-recipe">Recipe not available</p>
+        </div>
+      </div>
+    </div>
+  
+    <div class="no-results" ng-if="!errorMessage && foodSuggestions.length === 0">
+      <p>No food suggestions available. Please fetch recommendations.</p>
+    </div>
+  </div>

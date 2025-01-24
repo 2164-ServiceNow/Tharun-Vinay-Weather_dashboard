@@ -1,0 +1,82 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="app/components/dashboard/weather.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+
+<div class="container py-5">
+    <div class="text-center mb-4">
+        <h4 class="currentDate">{{ currentDate }}</h4>
+    </div>
+    <div class="row justify-content-start">
+        <div class="col-md-8 col-lg-6">
+            <div class="card p-4 shadow-sm rounded">
+                <h3 class="text-center mb-4">Welcome to Weather Dashboard,</h3>
+
+                <!-- Input and Button Section -->
+                <div class="input-group mb-4">
+                    <input type="text" class="form-control" ng-model="cityName" placeholder="Enter city name" />
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" ng-click="getWeather()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Weather Data Section (Current Weather) -->
+                <div ng-if="weatherData">
+                    <h4 class="text-center mb-3">{{weatherData.location.name}}, {{weatherData.location.region}}, {{weatherData.location.country}}</h4>
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="weather-info">
+                            <p><strong>Temperature:</strong> {{weatherData.current.temp_c}} °C / {{weatherData.current.temp_f}} °F</p>
+                            <p><strong>Humidity:</strong> {{weatherData.current.humidity}}%</p>
+                            <p><strong>Wind Speed:</strong> {{weatherData.current.wind_kph}} kph</p>
+                            <p><strong>Condition:</strong> {{weatherData.current.condition.text}}</p>
+                        </div>
+                        <div class="weather-image">
+                            <img ng-src="{{weatherData.current.condition.icon}}" alt="{{weatherData.current.condition.text}}" class="img-fluid">
+                        </div>
+                    </div>
+
+                    <!-- Forecast Toggle Section -->
+                    <div class="days-forecast mt-4">
+                        <h2 id="forecast-title" class="text-center">Weather Forecast</h2>
+                        <div class="mb-4 text-center">
+                            <button class="btn btn-info" ng-click="getWeather('hourly')">Hourly Forecast</button>
+                            <button class="btn btn-warning" ng-click="getWeather('weekly')">Weekly Forecast</button>
+                        </div>
+
+                        <!-- Hourly Forecast -->
+                        <div class="row" ng-if="hourlyForecast && hourlyForecast.length > 0">
+                            <div class="col-md-4 mb-3" ng-repeat="hour in hourlyForecast">
+                                <div class="card p-3 forecast-card">
+                                    <h6 class="text-center"><b>{{hour.time.split(' ')[1]}}</b></h6> <!-- Display the hour -->
+                                    <p class="text-center"><strong>{{hour.temp_c}} °C</strong></p>
+                                    <img ng-src="{{hour.condition.icon}}" alt="weather icon" class="w-100">
+                                    <p class="text-center"><strong>{{hour.condition.text}}</strong></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Weekly Forecast -->
+                        <div class="row" ng-if="weeklyForecast && weeklyForecast.length > 0">
+                            <div class="col-md-4 mb-3" ng-repeat="day in weeklyForecast">
+                                <div class="card p-3 forecast-card">
+                                    <h5 class="text-center"><strong>{{day.date | date:'EEE'}} || {{day.date | date:'MMM d'}}</strong></h5>
+                                    <img ng-src="{{day.day.condition.icon}}" alt="{{day.day.condition.text}}" class="w-100">
+                                    <p class="text-center"><strong>{{day.day.avgtemp_c}} °C / {{day.day.avgtemp_f}} °F</strong></p>
+                                    <p class="text-center"><strong>{{day.day.condition.text}}</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Error Message Section -->
+                <div ng-if="errorMessage">
+                    <p class="text-danger">{{ errorMessage }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
