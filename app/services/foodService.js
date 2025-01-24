@@ -1,9 +1,9 @@
 angular.module('weatherApp')
   .service('foodService', function($http) {
-    const SPOONACULAR_API_KEY = 'b46490c8856141f29299ec10905088cd' // Replace with your Spoonacular API key
+    const SPOONACULAR_API_KEY = '154aa189d68e4f1dac3655132747d991' 
     const BASE_URL = 'https://api.spoonacular.com/recipes'
 
-    // Function to get recipes based on cuisine and region
+
     this.getFoodSuggestions = function(cuisine, region) {
       const API_URL = `${BASE_URL}/complexSearch?query=${cuisine}&number=10&cuisine=${region}&apiKey=${SPOONACULAR_API_KEY}`
       return $http.get(API_URL)
